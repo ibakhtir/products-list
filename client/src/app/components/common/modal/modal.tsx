@@ -5,7 +5,7 @@ import { closeModal, getModalDisplay, getModalView } from "@/redux/modal"
 import useLockedBody from "@/hooks/useLockedBody"
 import { Cross } from "@/components/icons"
 import { Button } from "@/components/ui"
-import { AddForm, DeleteForm } from "@/components/common/forms"
+import { AddForm, EditForm, DeleteForm } from "@/components/common/forms"
 
 const s = {
   wrapper: `fixed inset-0 z-10 overflow-y-auto bg-black/30 backdrop-blur-[1px]`,
@@ -49,6 +49,7 @@ const Modal: FC = () => {
 
           <div className={s.content}>
             {modalView === "ADD_VIEW" && <AddForm onClose={handleClose} />}
+            {modalView === "EDIT_VIEW" && <EditForm onClose={handleClose} />}
             {modalView === "DELETE_VIEW" && (
               <DeleteForm onClose={handleClose} />
             )}

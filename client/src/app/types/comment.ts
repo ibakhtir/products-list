@@ -5,7 +5,7 @@ export interface INewComment {
 
 export interface IComment extends INewComment {
   _id: string
-  createdAt: Date
-  updatedAt: Date
-  __v: number
+  createdAt?: Date
+  updatedAt?: Date
+  __v?: number
 }

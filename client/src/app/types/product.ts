@@ -16,7 +16,7 @@ export interface INewProduct {
 
 export interface IProduct extends INewProduct {
   _id: string
-  createdAt: Date
-  updatedAt: Date
-  __v: number
+  createdAt?: Date
+  updatedAt?: Date
+  __v?: number
 }

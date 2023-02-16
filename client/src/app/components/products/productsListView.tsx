@@ -1,11 +1,7 @@
-import { FC, useEffect } from "react"
+import { FC } from "react"
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import {
-  getProductsLoadingStatus,
-  getProducts,
-  loadProductsList
-} from "@/redux/products"
+import { getProductsLoadingStatus, getProducts } from "@/redux/products"
 import { openModal, setModalView } from "@/redux/modal"
 import { getSort } from "@/redux/sort"
 import { rangeMap, sortBy } from "@/utils/helpers"
@@ -31,10 +27,6 @@ const ProductsListView: FC = () => {
   const sortedProducts = sortBy(selectedSort.value, products)
 
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(loadProductsList())
-  }, [dispatch])
 
   const handleClick = () => {
     dispatch(openModal())
