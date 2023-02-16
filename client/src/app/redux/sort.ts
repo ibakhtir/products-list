@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { RootState } from "./store"
+import { ISortListItem } from "@/types"
 
-interface ISortListItem {
-  value: string
-  label: string
-}
+import { RootState } from "./store"
 
 interface ISortIS {
   selectedSort: ISortListItem

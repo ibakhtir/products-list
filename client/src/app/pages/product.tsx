@@ -1,5 +1,5 @@
-const Product = () => {
-  return <div>Product</div>
-}
+import { ProductView } from "@/components/product"
+
+const Product = () => <ProductView />
 
 export default Product

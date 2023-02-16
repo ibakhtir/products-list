@@ -46,7 +46,7 @@ const ProductCard: FC<IProductCard> = ({ product }) => {
 
       <div className={s.btnContainer}>
         <Button
-          aria-label="Delete product"
+          aria-label="Open modal"
           className={s.button}
           onClick={handleClick}
         >

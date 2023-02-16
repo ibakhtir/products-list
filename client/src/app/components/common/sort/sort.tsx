@@ -11,8 +11,8 @@ import { Button } from "@/components/ui"
 
 const s = {
   container: `relative`,
-  button: `hidden md:flex justify-between items-center rounded bg-white
-  border border-gray-300 font-normal text-sm capitalize w-48 pl-3 pr-2 py-2.5`,
+  button: `hidden md:flex justify-between items-center rounded bg-white border border-gray-300
+  font-normal text-sm capitalize hover:opacity-75 w-48 pl-3 pr-2 py-2.5`,
   icon: `md:hidden outline-none cursor-pointer hover:opacity-75 transition ease-in-out duration-150`,
   list: `absolute right-0 z-10 bg-white rounded shadow text-sm min-w-[192px] py-2 mt-2`,
   listItem: `cursor-pointer px-4 py-2`,
