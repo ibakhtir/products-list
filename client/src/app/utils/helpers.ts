@@ -1,3 +1,5 @@
+import { IProduct } from "@/types"
+
 interface IData {
   [key: string]: string | number
 }
@@ -26,4 +28,26 @@ export function rangeMap(n: number, fn: (i: number) => any) {
   }
 
   return arr
+}
+
+export function sortBy(sortValue: string, data: IProduct[]) {
+  const sortedData = [...data]
+
+  if (sortValue === "name-asc") {
+    return sortedData.sort((a, b) => a.name.localeCompare(b.name))
+  }
+
+  if (sortValue === "name-desc") {
+    return sortedData.sort((a, b) => b.name.localeCompare(a.name))
+  }
+
+  if (sortValue === "count-asc") {
+    return sortedData.sort((a, b) => +a.count - +b.count)
+  }
+
+  if (sortValue === "count-desc") {
+    return sortedData.sort((a, b) => +b.count - +a.count)
+  }
+
+  return data
 }

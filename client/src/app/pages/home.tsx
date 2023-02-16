@@ -2,13 +2,15 @@ import { useEffect } from "react"
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { openModal, setModalView } from "@/redux/modal"
+import { getSort } from "@/redux/sort"
 import {
   getProductsLoadingStatus,
   getProducts,
   loadProductsList
 } from "@/redux/products"
-import { rangeMap } from "@/utils/helpers"
+import { rangeMap, sortBy } from "@/utils/helpers"
 import { Button, Skeleton } from "@/components/ui"
+import { Sort } from "@/components/common"
 import { ProductCard } from "@/components/product"
 
 const s = {
@@ -22,8 +24,11 @@ const s = {
 }
 
 const Home = () => {
+  const selectedSort = useAppSelector(getSort)
   const productsLoadingStatus = useAppSelector(getProductsLoadingStatus)
   const products = useAppSelector(getProducts)
+
+  const sortedProducts = sortBy(selectedSort.value, products)
 
   const dispatch = useAppDispatch()
 
@@ -41,6 +46,7 @@ const Home = () => {
       <div className={s.header}>
         <h5 className={s.title}>Products</h5>
         <div className={s.buttonsContainer}>
+          <Sort />
           <Button
             aria-label="Open modal"
             className={s.button}
@@ -53,7 +59,7 @@ const Home = () => {
 
       {!productsLoadingStatus ? (
         <div className={s.productsList}>
-          {products.map((product) => (
+          {sortedProducts.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
         </div>
