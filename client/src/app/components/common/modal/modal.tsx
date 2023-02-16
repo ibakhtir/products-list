@@ -2,14 +2,14 @@ import { FC } from "react"
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { closeModal, getModalDisplay, getModalView } from "@/redux/modal"
-import { Button } from "@/components/ui"
+import useLockedBody from "@/hooks/useLockedBody"
 import { Cross } from "@/components/icons"
+import { Button } from "@/components/ui"
 import { AddForm, DeleteForm } from "@/components/common/forms"
 
 const s = {
-  wrapper: `fixed inset-0 z-50 bg-black/30 backdrop-blur-[1px]
-  overflow-y-auto overflow-x-hidden p-4 md:p-0`,
-  container: `flex items-center justify-center w-full min-h-screen`,
+  wrapper: `fixed inset-0 z-10 overflow-y-auto bg-black/30 backdrop-blur-[1px]`,
+  container: `flex justify-center items-center min-h-full p-4`,
   modal: `bg-white rounded shadow-lg w-full md:max-w-lg`,
   headerContainer: `flex items-center justify-between border-b p-4`,
   title: `font-medium text-xl text-gray-900`,
@@ -22,6 +22,8 @@ const Modal: FC = () => {
 
   const dispatch = useAppDispatch()
 
+  useLockedBody(modalDisplay)
+
   const handleClose = () => {
     dispatch(closeModal())
   }
@@ -30,7 +32,6 @@ const Modal: FC = () => {
     <div className={s.wrapper}>
       <div className={s.container}>
         <div className={s.modal} role="dialog">
-          {/* Header */}
           <div className={s.headerContainer}>
             <h5 className={s.title}>
               {modalView === "ADD_VIEW" && "New Product"}
@@ -46,7 +47,6 @@ const Modal: FC = () => {
             </Button>
           </div>
 
-          {/* Body */}
           <div className={s.content}>
             {modalView === "ADD_VIEW" && <AddForm onClose={handleClose} />}
             {modalView === "DELETE_VIEW" && (

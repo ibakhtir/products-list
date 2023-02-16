@@ -1,2 +1,2 @@
 export { default as Modal } from "./modal"
-export { AddForm } from "./forms"
+export { AddForm, DeleteForm } from "./forms"

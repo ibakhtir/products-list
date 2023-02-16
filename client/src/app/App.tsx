@@ -1,14 +1,14 @@
-import AppRouter from "@/components/AppRouter"
+import { FC } from "react"
+
+import AppRouter from "@/components/router"
 import { Container } from "@/components/ui"
 import { Modal } from "@/components/common"
 
-function App() {
-  return (
-    <Container>
-      <Modal />
-      <AppRouter />
-    </Container>
-  )
-}
+const App: FC = () => (
+  <Container>
+    <Modal />
+    <AppRouter />
+  </Container>
+)
 
 export default App
