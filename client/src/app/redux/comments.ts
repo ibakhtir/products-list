@@ -77,7 +77,7 @@ export function removeComment(commentId: string) {
     try {
       const content = await commentService.remove(commentId)
 
-      if (!content) {
+      if (content) {
         dispatch(commentRemoved(commentId))
       }
     } catch (error) {

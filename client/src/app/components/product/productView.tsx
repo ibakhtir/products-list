@@ -6,10 +6,11 @@ import { getProductById } from "@/redux/products"
 import { openModal, setActiveProduct, setModalView } from "@/redux/modal"
 import { Gear } from "@/components/icons"
 import { Button } from "@/components/ui"
+import Comments from "@/components/comments"
 
 const s = {
   container: `grid md:grid-cols-2 gap-8 pt-8 pb-12`,
-  productContainer: `flex flex-col justify-center items-center`,
+  productContainer: `flex flex-col items-center`,
   productContent: `relative max-w-[400px]`,
   image: `w-full h-auto rounded`,
   editBtn: `absolute top-1 right-1 bg-white rounded w-10 h-10 
@@ -56,7 +57,7 @@ const ProductView: FC = () => {
         </div>
       </div>
 
-      <div>Comments</div>
+      <Comments />
     </div>
   ) : null
 }

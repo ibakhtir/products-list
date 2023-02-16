@@ -4,7 +4,7 @@ export interface IInputValue {
 }
 
 export interface ITarget {
-  target: HTMLInputElement
+  target: HTMLInputElement | HTMLTextAreaElement
 }
 
 export interface IForm {
