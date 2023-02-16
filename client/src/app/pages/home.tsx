@@ -1,17 +1,40 @@
-import { useAppDispatch } from "@/redux/hooks"
-import { openModal } from "@/redux/modal"
-import { Button } from "@/components/ui"
+import { useEffect } from "react"
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
+import { openModal, setModalView } from "@/redux/modal"
+import {
+  getProductsLoadingStatus,
+  getProducts,
+  loadProductsList
+} from "@/redux/products"
+import { rangeMap } from "@/utils/helpers"
+import { Button, Skeleton } from "@/components/ui"
+import { ProductCard } from "@/components/product"
 
 const s = {
-  container: `flex flex-col pt-5 pb-20`,
-  header: `flex justify-between items-center h-16`,
+  container: `flex flex-col pt-3 pb-20`,
+  header: `flex justify-between items-center h-24`,
   title: `font-medium text-lg`,
   buttonsContainer: `flex justify-center items-center space-x-4`,
-  button: `bg-black text-white rounded hover:opacity-75 py-2.5 px-4`
+  button: `bg-black text-white rounded hover:opacity-75 py-2.5 px-4`,
+  productsList: `grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4`,
+  skeletonBody: `w-60 h-60`
 }
 
 const Home = () => {
+  const productsLoadingStatus = useAppSelector(getProductsLoadingStatus)
+  const products = useAppSelector(getProducts)
+
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(loadProductsList())
+  }, [dispatch])
+
+  const handleClick = () => {
+    dispatch(openModal())
+    dispatch(setModalView("ADD_VIEW"))
+  }
 
   return (
     <div className={s.container}>
@@ -21,12 +44,28 @@ const Home = () => {
           <Button
             aria-label="Open modal"
             className={s.button}
-            onClick={() => dispatch(openModal())}
+            onClick={handleClick}
           >
             New Product
           </Button>
         </div>
       </div>
+
+      {!productsLoadingStatus ? (
+        <div className={s.productsList}>
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className={s.productsList}>
+          {rangeMap(8, (i) => (
+            <Skeleton key={i}>
+              <div className={s.skeletonBody} />
+            </Skeleton>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

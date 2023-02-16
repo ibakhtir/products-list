@@ -17,3 +17,13 @@ export function checkIsEmpty(data: IData) {
 export function checkErrors(data: IData) {
   return Object.values(data).every((item) => item === "")
 }
+
+export function rangeMap(n: number, fn: (i: number) => any) {
+  const arr = []
+
+  while (n > arr.length) {
+    arr.push(fn(arr.length))
+  }
+
+  return arr
+}

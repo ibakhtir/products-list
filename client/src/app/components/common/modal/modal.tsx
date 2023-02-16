@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { closeModal, getModalDisplay, getModalView } from "@/redux/modal"
 import { Button } from "@/components/ui"
 import { Cross } from "@/components/icons"
-import { AddForm } from "@/components/common/forms"
+import { AddForm, DeleteForm } from "@/components/common/forms"
 
 const s = {
   wrapper: `fixed inset-0 z-50 bg-black/30 backdrop-blur-[1px]
@@ -49,6 +49,9 @@ const Modal: FC = () => {
           {/* Body */}
           <div className={s.content}>
             {modalView === "ADD_VIEW" && <AddForm onClose={handleClose} />}
+            {modalView === "DELETE_VIEW" && (
+              <DeleteForm onClose={handleClose} />
+            )}
           </div>
         </div>
       </div>

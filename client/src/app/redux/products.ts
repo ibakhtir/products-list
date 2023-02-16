@@ -99,7 +99,7 @@ export function removeProduct(productId: string) {
     try {
       const content = await productService.remove(productId)
 
-      if (!content) {
+      if (content) {
         dispatch(productRemoved(productId))
       }
     } catch (error) {

@@ -2,7 +2,7 @@ import { IProduct, INewProduct } from "@/types"
 
 import httpService from "./http.service"
 
-const productEndpoint = "/product"
+const productEndpoint = "/product/"
 
 const productService = {
   get: async () => {

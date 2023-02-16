@@ -2,7 +2,7 @@ import { INewComment } from "@/types"
 
 import httpService from "./http.service"
 
-const commentEndpoint = "/comment"
+const commentEndpoint = "/comment/"
 
 const commentService = {
   get: async (productId: string) => {
