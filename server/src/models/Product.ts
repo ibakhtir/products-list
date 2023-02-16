@@ -12,10 +12,12 @@ const productSchema = new Schema(
       width: { type: Number, required: true },
       height: { type: Number, required: true }
     },
-    comment: {
-      type: Schema.Types.ObjectId,
-      ref: "Comment"
-    }
+    comment: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment"
+      }
+    ]
   },
   {
     timestamps: true

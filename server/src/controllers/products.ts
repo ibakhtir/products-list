@@ -4,7 +4,7 @@ import Product from "../models/Product"
 
 export const getAllProducts = async (_: Request, res: Response) => {
   try {
-    const products = await Product.find()
+    const products = await Product.find().sort({ name: 1, count: -1 })
 
     res.status(200).send(products)
   } catch (error) {
