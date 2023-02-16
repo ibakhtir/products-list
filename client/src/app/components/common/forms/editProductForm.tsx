@@ -26,7 +26,7 @@ const errorsState = {
   height: ""
 }
 
-const EditForm: FC<IEditForm> = ({ onClose }) => {
+const EditProductForm: FC<IEditForm> = ({ onClose }) => {
   const activeProduct = useAppSelector(getActiveProduct)
 
   const product = useAppSelector(getProductById(activeProduct || ""))
@@ -156,4 +156,4 @@ const EditForm: FC<IEditForm> = ({ onClose }) => {
   )
 }
 
-export default EditForm
+export default EditProductForm

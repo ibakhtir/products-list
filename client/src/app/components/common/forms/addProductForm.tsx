@@ -37,7 +37,7 @@ const errorsState = {
   height: ""
 }
 
-const AddForm: FC<IAddForm> = ({ onClose }) => {
+const AddProductForm: FC<IAddForm> = ({ onClose }) => {
   const [data, setData] = useState(initialData)
   const [size, setSize] = useState(initialSize)
   const [errors, setErrors] = useState(errorsState)
@@ -152,4 +152,4 @@ const AddForm: FC<IAddForm> = ({ onClose }) => {
   )
 }
 
-export default AddForm
+export default AddProductForm

@@ -16,7 +16,7 @@ const s = {
   cancel: `bg-white text-black border w-full py-2.5 rounded hover:opacity-75`
 }
 
-const DeleteForm: FC<IDeleteForm> = ({ onClose }) => {
+const DeleteProductForm: FC<IDeleteForm> = ({ onClose }) => {
   const activeProduct = useAppSelector(getActiveProduct)
 
   const dispatch = useAppDispatch()
@@ -46,4 +46,4 @@ const DeleteForm: FC<IDeleteForm> = ({ onClose }) => {
   )
 }
 
-export default DeleteForm
+export default DeleteProductForm
