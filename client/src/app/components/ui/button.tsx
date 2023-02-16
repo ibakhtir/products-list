@@ -11,7 +11,7 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 const s = {
   basic: `inline-flex justify-center items-center font-semibold text-sm tracking-wide
   uppercase leading-6 focus:ring-0 transition ease-in-out duration-150`,
-  default: `bg-black text-white w-full py-5 hover:opacity-75`,
+  default: `bg-black text-white w-full py-2.5 rounded hover:opacity-75`,
   naked: `bg-transparent text-current hover:opacity-75`,
   disabled: `opacity-75 cursor-not-allowed`
 }
@@ -32,7 +32,12 @@ const Button: FC<IButton> = ({
   })
 
   return (
-    <button type={type} className={rootClassName} {...rest}>
+    <button
+      type={type}
+      className={rootClassName}
+      disabled={disabled || loading}
+      {...rest}
+    >
       {children}
       {loading && <LoadingDots />}
     </button>

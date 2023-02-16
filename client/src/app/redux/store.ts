@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit"
 
 import productsReducer from "./products"
 import commentsReducer from "./comments"
+import modalReducer from "./modal"
 
 const store = configureStore({
   reducer: {
     products: productsReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    modal: modalReducer
   }
 })
 
